@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 class Create extends Component {
     constructor() {
@@ -23,6 +25,20 @@ class Create extends Component {
             Title:'',
             Year:'',
             Poster:''
+        });
+
+        const newMovie = {
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
+        }
+        //new api from server 
+        axios.post('http://localhost:4000/api/movies',newMovie).then
+        ((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err);
         });
     }
     onChangeMovieName(event) {
